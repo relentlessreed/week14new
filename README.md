@@ -22,15 +22,15 @@ In this mini-project, you will work with a group to build a full-stack crowdfund
 
 * It's done when a new user can create an account on the login page and then be immediately logged in with a session.
 
-* It's done when the `/profile` route renders the logged-in user's projects and a form to create a new project.
+* It's done when the `/dashboard` route renders the logged-in user's projects and a form to create a new project.
 
-* It's done when only a logged in user can visit the `/profile` route.
+* It's done when only a logged in user can visit the `/dashboard` route.
 
-* It's done when a logged in user is redirected to `/profile` when they try to visit `/login` again.
+* It's done when a logged in user is redirected to `/dashboard` when they try to visit `/login` again.
 
-* It's done when a user on the profile page can use the form to create a new project in the database.
+* It's done when a user on the dashboard page can use the form to create a new project in the database.
 
-* It's done when a user on the profile page can select a "Delete" button to remove their project from the database.
+* It's done when a user on the dashboard page can select a "Delete" button to remove their project from the database.
 
 * It's done when a logged-in user can select a "Logout" button to remove their session.
 
