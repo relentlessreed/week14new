@@ -1,5 +1,5 @@
 header,
-.Posts:not(:last-child) {
+.project:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
 
@@ -8,14 +8,14 @@ header,
   border: none;
   padding: 0;
   cursor: pointer;
-  color: #1b89bc;
+  color: #ffffff;
   text-decoration: none;
   font-size: 100%;
   font-weight: 700;
 }
 
 .no-button:hover {
-  color: #065b83;
+  color: #ffffff;
   text-decoration: underline;
 }
 

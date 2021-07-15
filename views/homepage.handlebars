@@ -9,17 +9,19 @@
             {{post.user.name}}
             on
             {{format_date post.date_created}}</p>
+            </a>
         </div>
         <div class='card-body'>
           <p>
             {{post.contents}}
           </p>
+          {{#if ../logged_in}}
+            <div class='form-group'>
+        <button type='submit' class='btn btn-primary'>Leave A Comment</button>
+      </div>
+          {{/if}}
         </div>
       </div>
-    </div>
-    {{#if post.comments.length}}
-      <p>test</p>
-    {{/if}}
-  </a>
-
+    </div>  
 {{/each}}
+
