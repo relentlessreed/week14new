@@ -22,8 +22,12 @@ const newFormHandler = async (event) => {
 };
 
 const delButtonHandler = async (event) => {
-    if (event.target.hasAttribute('data-id')) {
+    if (event.target.hasAttribute('del-{{post.id}}')) {
         const id = event.target.getAttribute('data-id');
+        // //EVENT BUBBLING or EVENT DELEGATION HAPPENS HERE
+        //         shoppingListItemEl.append(
+        //             '<button class="btn btn-danger btn-small delete-item-btn">Remove</button>'
+        //           );
 
         const response = await fetch(`/api/posts/${id}`, {
             method: 'DELETE',

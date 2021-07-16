@@ -1,94 +1,122 @@
-# Unit 14 Mini-Posts: Crowdfunding App
+# 14 Model-View-Controller (MVC): Tech Blog
 
-In this mini-Posts, you will work with a group to build a full-stack crowdfunding app using Node.js, Express.js, Sequelize, Handlebars.js, and MVC architecture.
+## Your Task
 
-## User Stories
+Writing about tech can be just as important as making it. Developers spend plenty of time creating new applications and debugging existing codebases, but most developers also spend at least some of their time reading and writing about technical concepts, recent advancements, and new technologies. A simple Google search for any concept covered in this course returns thousands of think pieces and tutorials from developers of all skill levels!
 
-* As a user, I want to see a list of current Postss seeking funding.
+Your task this week is to build a CMS-style blog site similar to a Wordpress site, where developers can publish their blog posts and comment on other developers’ posts as well. You’ll build this site completely from scratch and deploy it to Heroku. Your app will follow the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
 
-* As a user, I want to be able to create an account.
+## User Story
 
-* As a registered user, I want to post my own Postss to ask for funding.
+```md
+AS A developer who writes about tech
+I WANT a CMS-style blog site
+SO THAT I can publish articles, blog posts, and my thoughts and opinions
+```
 
-### Acceptance Criteria
+## Acceptance Criteria
 
-* It's done when the `/` homepage route renders a list of all Postss from the database.
+```md
+GIVEN a CMS-style blog site
+WHEN I visit the site for the first time
+THEN I am presented with the homepage, which includes existing blog posts if any have been posted; navigation links for the homepage and the dashboard; and the option to log in
+WHEN I click on the homepage option
+THEN I am taken to the homepage
+WHEN I click on any other links in the navigation
+THEN I am prompted to either sign up or sign in
+WHEN I choose to sign up
+THEN I am prompted to create a username and password
+WHEN I click on the sign-up button
+THEN my user credentials are saved and I am logged into the site
+WHEN I revisit the site at a later time and choose to sign in
+THEN I am prompted to enter my username and password
+WHEN I am signed in to the site
+THEN I see navigation links for the homepage, the dashboard, and the option to log out
+WHEN I click on the homepage option in the navigation
+THEN I am taken to the homepage and presented with existing blog posts that include the post title and the date created
+WHEN I click on an existing blog post
+THEN I am presented with the post title, contents, post creator’s username, and date created for that post and have the option to leave a comment
+WHEN I enter a comment and click on the submit button while signed in
+THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created
+WHEN I click on the dashboard option in the navigation
+THEN I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post
+WHEN I click on the button to add a new blog post
+THEN I am prompted to enter both a title and contents for my blog post
+WHEN I click on the button to create a new blog post
+THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
+WHEN I click on one of my existing posts in the dashboard
+THEN I am able to delete or update my post and taken back to an updated dashboard
+WHEN I click on the logout option in the navigation
+THEN I am signed out of the site
+WHEN I am idle on the site for more than a set time
+THEN I am able to view comments but I am prompted to log in again before I can add, update, or delete comments
+```
 
-* It's done when the `/Posts/:id` route renders an individual Posts's details based on the route parameter id.
+## Mock-Up
 
-* It's done when the `/login` route renders a form to log in and a form to create a new account.
+The following animation demonstrates the application functionality:
 
-* It's done when an existing user can enter their credentials on the login page to create a session on the server.
+![Animation cycles through signing into the app, clicking on buttons, and updating blog posts.](./Assets/14-mvc-homework-demo-01.gif) 
 
-* It's done when a new user can create an account on the login page and then be immediately logged in with a session.
+## Getting Started
 
-* It's done when the `/dashboard` route renders the logged-in user's Postss and a form to create a new Posts.
+Your application’s folder structure must follow the Model-View-Controller paradigm. You’ll need to use the [express-handlebars](https://www.npmjs.com/package/express-handlebars) package to implement Handlebars.js for your Views, use the [MySQL2](https://www.npmjs.com/package/mysql2) and [Sequelize](https://www.npmjs.com/package/sequelize) packages to connect to a MySQL database for your Models, and create an Express.js API for your Controllers.
 
-* It's done when only a logged in user can visit the `/dashboard` route.
+You’ll also need the [dotenv package](https://www.npmjs.com/package/dotenv) to use environment variables, the [bcrypt package](https://www.npmjs.com/package/bcrypt) to hash passwords, and the [express-session](https://www.npmjs.com/package/express-session) and [connect-session-sequelize](https://www.npmjs.com/package/connect-session-sequelize) packages to add authentication.
 
-* It's done when a logged in user is redirected to `/dashboard` when they try to visit `/login` again.
+**Note**: The [express-session](https://www.npmjs.com/package/express-session) package stores the session data on the client in a cookie. When you are idle on the site for more than a set time, the cookie will expire and you will be required to log in again to start a new session. This is the default behavior and you do not have to do anything to your application other than implement the npm package.
 
-* It's done when a user on the dashboard page can use the form to create a new Posts in the database.
+## Grading Requirements
 
-* It's done when a user on the dashboard page can select a "Delete" button to remove their Posts from the database.
+This homework is graded based on the following criteria:
 
-* It's done when a logged-in user can select a "Logout" button to remove their session.
+### Technical Acceptance Criteria: 40%
 
-* It's done when the API routes to create and delete posts are protected from non logged-in users.
+* Satisfies all of the preceding acceptance criteria plus the following:
 
-* It's done when the code is organized using MVC architecture.
+    * Application’s folder structure follows the Model-View-Controller paradigm.
 
-* It's done when the views are rendered with Handlebars.js templates.
+    * Uses the [express-handlebars](https://www.npmjs.com/package/express-handlebars) package to implement Handlebars.js for your Views.
 
-## Specifications 
+    * Application must be deployed to Heroku.
 
-* The database models have the following fields and associations:
+### Deployment: 32%
 
-  * `User`
+* Application deployed at live URL.
 
-    * `id`: primary key
+* Application loads with no errors.
 
-    * `name`
+* Application GitHub URL submitted.
 
-    * `email`
+* GitHub repository contains application code.
 
-    * `password`
+### Application Quality: 15%
 
-  * `Posts`
+* User experience is intuitive and easy to navigate.
 
-    * `id`: primary key
+* User interface style is clean and polished.
 
-    * `name`
+* Application resembles the mock-up functionality provided in the homework instructions.
 
-    * `description`
+### Repository Quality: 13%
 
-    * `date_created`
+* Repository has a unique name.
 
-    * `needed_funding`
+* Repository follows best practices for file structure and naming conventions.
 
-    * `user_id`: foreign key that references `User.id`
+* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
 
-  * Users have many Postss, and Postss belong to a user.
+* Repository contains multiple descriptive commit messages.
 
-    * If a user is deleted, all associated Postss are also deleted.
+* Repository contains quality readme file with description, screenshot, and link to deployed application.
 
----
+## Review
 
-## 💡 Hints
+You are required to submit BOTH of the following for review:
 
-* What tools can you use to test the existing API routes if you don't yet have a front end?
+* The URL of the functional, deployed application.
 
-* Where would you place the client-side JavaScript for capturing form data?
-
-* How can middleware help protect routes from non logged-in users?
-
-* How can Handlebars.js helpers (both built-in and custom) be used to render the desired results?
-
-## 🏆 Bonus
-
-If you have completed this activity, work through the following challenge with your partner to further your knowledge:
-
-* Add an `/edit/:id` route for logged in users to update their Postss' details. Then deploy the app to Heroku!
+* The URL of the GitHub repository, with a unique name and a readme describing the project.
 
 ---
 © 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.

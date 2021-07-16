@@ -8,14 +8,14 @@ header,
   border: none;
   padding: 0;
   cursor: pointer;
-  color: #ffffff;
+  color: #1b89bc;
   text-decoration: none;
   font-size: 100%;
   font-weight: 700;
 }
 
 .no-button:hover {
-  color: #ffffff;
+  color: #065b83;
   text-decoration: underline;
 }
 
@@ -29,4 +29,9 @@ header,
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+.form-input {
+  display: flex;
+  width: 100%;
 }

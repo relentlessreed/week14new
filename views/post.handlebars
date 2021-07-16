@@ -5,21 +5,47 @@
   <div class='card-body'>
     <p>{{contents}}</p>
     {{#if logged_in}}
+    <style>
+        button{
+            cursor: pointer;
+			margin: 15px 0;
+        }
+    </style>
     <div class='col-md-4'>
+      <div class='form-group'>
+              <style>
+        button{
+            cursor: pointer;
+			margin: 15px 0;
+        }
+    </style>
+        <form class='form new-project-form'>
+      <div class='form-group col-md-12'>
+        <input
+          class='form-input'
+          type='text'
+          id='comment-form'
+          name='project-name'
+        />
+      </div><button type='submit' class='btn btn-primary'>Leave A Comment</button>
+      </div>
+      {{#if isMine}}
       <button
         class='btn btn-sm editbtn'
         id='edit-{{post.id}}'
         data-id='{{post.id}}'
         data-operation='edit'
       >EDIT</button>
-      <button
+      <div class="delBtn">
+        <button
         class='btn btn-sm btn-danger delbtn'
-        id='del-{{post.id}}'
         data-id='{{post.id}}'
         data-operation='delete'
       >
-        DELETE
+        DELETE POST
       </button>
+      </div>
+      {{/if}}
     </div>
   </div>
 </div>

@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const session = require('express-session');
 const { Post, User } = require('../models');
 const withAuth = require('../utils/auth');
 
@@ -40,9 +41,15 @@ router.get('/post/:id', async (req, res) => {
 
         const post = postData.get({ plain: true });
 
+        console.log(post)
+        console.log(req.session)
+
+        console.log(post.user_id === req.session.user_id)
+
         res.render('post', {
             ...post,
-            logged_in: req.session.logged_in
+            logged_in: req.session.logged_in,
+            isMine: post.user_id === req.session.user_id
         });
     } catch (err) {
         res.status(500).json(err);
