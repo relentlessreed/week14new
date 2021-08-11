@@ -15,7 +15,7 @@ header,
 }
 
 .no-button:hover {
-  color: #065b83;
+  color: #a3cfe4;
   text-decoration: underline;
 }
 
@@ -29,9 +29,26 @@ header,
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  background-color: rgb(85, 144, 255);
 }
 
 .form-input {
   display: flex;
   width: 100%;
+}
+
+body {
+  background-color: #99cbe2;
+}
+
+.p-2 {
+  background-color: rgb(85, 144, 255);
+}
+
+.postTitle {
+  color: #065b83;
+}
+
+.card-body {
+  background-color: rgb(231, 249, 255);
 }
