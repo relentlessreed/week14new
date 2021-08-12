@@ -33,6 +33,7 @@
         />
       </div><button type='submit' class='btn btn-primary'>Leave A Comment</button>
       </div>
+      </form>
       {{#if isMine}}
       <a
         class='btn btn-sm editbtn'
@@ -43,6 +44,7 @@
       >EDIT</a>
       <div class="delBtn">
         <button
+        data-comments='{{comments.length}}'
         class='btn btn-sm btn-danger deletePost'
         data-id='{{id}}'
         data-operation='delete'

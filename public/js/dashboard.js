@@ -38,30 +38,11 @@ const delButtonHandler = async (event) => {
     }
 };
 
-// EDIT BUTTON HANDLING
-const editFormHandler = async (event) => {
-    event.preventDefault()
-    console.log('EDIT BUTTON CLICKED', event);
-    const id = event.target.dataset.id;
-
-    const response = await fetch(`/api/posts/${id}`, {
-        method: 'PUT',
-    });
-
-    if (response.ok) {
-        document.location.replace(`/editPost/${id}`);
-    } else {
-        alert('Failed to edit posts');
-    }
-};
-
 document
     .querySelector('.new-project-form')
     .addEventListener('submit', newFormHandler);
 
-document
-    .querySelector('.edit-form')
-    .addEventListener('submit', editFormHandler);
+
 
 // document
 //     .querySelector('.project-list')

@@ -20,43 +20,49 @@ const newFormHandler = async (event) => {
         }
     }
 };
-// EDIT BUTTON HANDLING
-const editFormHandler = async (event) => {
-    event.preventDefault()
-    console.log(event);
-    const id = event.target.dataset.id;
-
-    const response = await fetch(`/api/posts/${id}`, {
-        method: 'PUT',
-    });
-
-    if (response.ok) {
-        document.location.replace('/edit');
-    } else {
-        alert('Failed to edit posts');
-    }
-};
 
 // DELETE BUTTON HANDLING
 const delButtonHandler = async (event) => {
     event.preventDefault()
     console.log(event);
     const id = event.target.dataset.id;
+    const commentCount = event.target.dataset.comments;
 
-    const response = await fetch(`/api/posts/${id}`, {
-        method: 'DELETE',
-    });
+    if (commentCount == false) {
+        let response = await fetch(`/api/posts/${id}`, {
+            method: 'DELETE',
+        });
 
-    if (response.ok) {
-        document.location.replace('/dashboard');
+        if (response.ok) {
+            document.location.replace('/dashboard');
+        } else {
+            alert('Failed to delete posts');
+        }
     } else {
-        alert('Failed to delete posts');
-    }
-};
+        let response = await fetch(`/api/comments/${id}`, {
+            method: 'DELETE',
+        });
 
-document
-    .querySelector('.new-project-form')
-    .addEventListener('submit', newFormHandler);
+        if (response.ok) {
+            let response = await fetch(`/api/posts/${id}`, {
+                method: 'DELETE',
+            });
+
+            if (response.ok) {
+                document.location.replace('/dashboard');
+            } else {
+                alert('Failed to delete posts');
+            }
+        } else {
+            alert('Failed to delete comments');
+        }
+    }
+}
+if (document.querySelector('.new-project-form')) {
+    document
+        .querySelector('.new-project-form')
+        .addEventListener('submit', newFormHandler);
+}
 
 if (document
     .querySelector('.deletePost')
