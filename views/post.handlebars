@@ -1,6 +1,10 @@
 <div class='card'>
   <div class='card-header'>
     <h2 class="postTitle">{{title}}</h2>
+     <p class="postTitle">Created by
+            {{user.name}}
+            on
+            {{format_date date_created}}</p>
   </div>
   <div class='card-body'>
     <p>{{contents}}</p>
@@ -19,23 +23,24 @@
 			margin: 15px 0;
         }
     </style>
-        <form class='form new-project-form'>
+        <form class='form comment-form'>
       <div class='form-group col-md-12'>
         <input
           class='form-input'
           type='text'
-          id='comment-form'
+          id='comment-text'
           name='project-name'
         />
       </div><button type='submit' class='btn btn-primary'>Leave A Comment</button>
       </div>
       {{#if isMine}}
-      <button
+      <a
         class='btn btn-sm editbtn'
         id='edit-{{id}}'
         data-id='{{id}}'
         data-operation='edit'
-      >EDIT</button>
+         href='/editPost/{{id}}'
+      >EDIT</a>
       <div class="delBtn">
         <button
         class='btn btn-sm btn-danger deletePost'
@@ -48,5 +53,8 @@
       {{/if}}
     </div>
   </div>
+  {{> comment comments}}
 </div>
 {{/if}}
+
+<script src="/js/comment.js"></script>

@@ -20,7 +20,24 @@ const newFormHandler = async (event) => {
         }
     }
 };
+// EDIT BUTTON HANDLING
+const editFormHandler = async (event) => {
+    event.preventDefault()
+    console.log(event);
+    const id = event.target.dataset.id;
 
+    const response = await fetch(`/api/posts/${id}`, {
+        method: 'PUT',
+    });
+
+    if (response.ok) {
+        document.location.replace('/edit');
+    } else {
+        alert('Failed to edit posts');
+    }
+};
+
+// DELETE BUTTON HANDLING
 const delButtonHandler = async (event) => {
     event.preventDefault()
     console.log(event);
