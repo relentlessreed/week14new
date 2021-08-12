@@ -22,22 +22,18 @@ const newFormHandler = async (event) => {
 };
 
 const delButtonHandler = async (event) => {
-    if (event.target.hasAttribute('del-{{post.id}}')) {
-        const id = event.target.getAttribute('data-id');
-        // //EVENT BUBBLING or EVENT DELEGATION HAPPENS HERE
-        //         shoppingListItemEl.append(
-        //             '<button class="btn btn-danger btn-small delete-item-btn">Remove</button>'
-        //           );
+    event.preventDefault()
+    console.log(event);
+    const id = event.target.dataset.id;
 
-        const response = await fetch(`/api/posts/${id}`, {
-            method: 'DELETE',
-        });
+    const response = await fetch(`/api/posts/${id}`, {
+        method: 'DELETE',
+    });
 
-        if (response.ok) {
-            document.location.replace('/dashboard');
-        } else {
-            alert('Failed to delete posts');
-        }
+    if (response.ok) {
+        document.location.replace('/dashboard');
+    } else {
+        alert('Failed to delete posts');
     }
 };
 
@@ -45,6 +41,10 @@ document
     .querySelector('.new-project-form')
     .addEventListener('submit', newFormHandler);
 
-document
-    .querySelector('.project-list')
-    .addEventListener('click', delButtonHandler);
+if (document
+    .querySelector('.deletePost')
+) {
+    document
+        .querySelector('.deletePost')
+        .addEventListener('click', delButtonHandler);
+}

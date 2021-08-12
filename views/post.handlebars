@@ -32,14 +32,14 @@
       {{#if isMine}}
       <button
         class='btn btn-sm editbtn'
-        id='edit-{{post.id}}'
-        data-id='{{post.id}}'
+        id='edit-{{id}}'
+        data-id='{{id}}'
         data-operation='edit'
       >EDIT</button>
       <div class="delBtn">
         <button
-        class='btn btn-sm btn-danger delbtn'
-        data-id='{{post.id}}'
+        class='btn btn-sm btn-danger deletePost'
+        data-id='{{id}}'
         data-operation='delete'
       >
         DELETE POST
